@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<style>
+    article {
+        border: 1px solid;
+        padding: 10px;
+    }
+
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        max-width: 1000px;
+        margin: 0px auto;
+        grid-gap: 10px;
+
+    }
+</style>
+
+<body>
+    <section class="data-container"></section>
+    <template>
+        <article class="animals">
+            <h3></h3>
+            <img src="" alt="">
+            <p class="type"> </p>
+            <p class="levested"> </p>
+        </article>
+    </template>
+
+    <main></main>
+    <script>
+        document.addEventListener("DOMContentLoaded", showAnimals);
+
+        const animals = [{
+                "navn": "gris",
+                "billede": "http://mabe-kea.dk/E19/pics/pig.png",
+                "type": "pattedyr",
+                "levested": "svinefarme"
+            },
+            {
+                "navn": "frø",
+                "billede": "http://mabe-kea.dk/E19/pics/frog.png",
+                "type": "pattedyr",
+                "levested": "vand"
+            },
+            {
+                "navn": "ræv",
+                "billede": "http://mabe-kea.dk/E19/pics/fox.png",
+                "type": "pattedyr",
+                "levested": "skoven"
+            },
+            {
+                "navn": "sild",
+                "billede": "http://mabe-kea.dk/E19/pics/sild.jpg",
+                "type": "fisk",
+                "levested": "vand"
+            },
+            {
+                "navn": "krokodille",
+                "billede": "http://mabe-kea.dk/E19/pics/kroko.jpg",
+                "type": "krybdyr",
+                "levested": "vand"
+            }
+        ];
+        console.log(animals);
+
+
+        function showAnimals() {
+
+
+            const container = document.querySelector(".data-container");
+            const animalTemplate = document.querySelector("template");
+
+            animals.forEach(animal => {
+                let klon = animalTemplate.cloneNode(true).content;
+                klon.querySelector("h3").textContent = animal.navn;
+                klon.querySelector(".type").textContent = `type: ${animal.type}`;
+                klon.querySelector(".levested").textContent = `levested: ${animal.levested}`;
+                klon.querySelector("img").src = animal.billede;
+                container.appendChild(klon);
+
+
+            })
+
+        }
+    </script>
+</body></html>
